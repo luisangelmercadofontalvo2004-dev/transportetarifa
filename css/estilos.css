@@ -1,0 +1,70 @@
+body {
+    background-color: #f4f7f6;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 25px 40px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+}
+
+.card h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.card p {
+    font-size: 1.1rem;
+    margin: 10px 0;
+    color: #333333;
+}
+
+.card hr {
+    border: none;
+    border-top: 1px solid #e0e0e0;
+    margin: 20px 0;
+}
+
+.total {
+    font-size: 1.4rem;
+    margin: 0;
+}
+
+/* Colores personalizados según el tipo de transporte */
+.bus {
+    border-top: 8px solid #2ea44f; /* Verde */
+}
+.bus h2, .bus .total {
+    color: #2ea44f;
+}
+
+.metro {
+    border-top: 8px solid #0969da; /* Azul */
+}
+.metro h2, .metro .total {
+    color: #0969da;
+}
+
+.taxi {
+    border-top: 8px solid #d97706; /* Amarillo / Naranja */
+}
+.taxi h2, .taxi .total {
+    color: #d97706;
+}
+
+.intermunicipal {
+    border-top: 8px solid #8250df; /* Morado */
+}
+.intermunicipal h2, .intermunicipal .total {
+    color: #8250df;
+}

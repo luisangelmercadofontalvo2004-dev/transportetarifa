@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Tarifas de Transporte</title>
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+    <script>
+
+        let nombre = prompt("Ingrese su nombre:");
+        let tipoTransporte = parseInt(prompt("Seleccione el tipo de transporte:\n1. Bus Urbano\n2. Metro\n3. Taxi\n4. Intermunicipal"));
+        let condicionEspecial = parseInt(prompt("Seleccione su condición especial:\n1. Estudiante\n2. Adulto Mayor\n3. Ninguna"));
+
+        let tarifaBase = 0;
+        let nombreTransporte = "";
+        let claseTransporte = "";
+
+        switch (tipoTransporte) {
+            case 1:
+                tarifaBase = 2500;
+                nombreTransporte = "Bus Urbano";
+                claseTransporte = "bus";
+                break;
+            case 2:
+                tarifaBase = 2800;
+                nombreTransporte = "Metro";
+                claseTransporte = "metro";
+                break;
+            case 3:
+                tarifaBase = 5000;
+                nombreTransporte = "Taxi";
+                claseTransporte = "taxi";
+                break;
+            case 4:
+                tarifaBase = 10000;
+                nombreTransporte = "Intermunicipal";
+                claseTransporte = "intermunicipal";
+                break;
+            default:
+                alert("Tipo de transporte no válido.");
+                break;
+        }
+
+    
+        let nombreCondicion = "Ninguna";
+
+        if (condicionEspecial === 1) {
+            porcentajeDescuento = 0.20;
+            nombreCondicion = "Estudiante (20%)";
+        } else if (condicionEspecial === 2) {
+            porcentajeDescuento = 0.30;
+            nombreCondicion = "Adulto mayor (30%)";
+        } else if (condicionEspecial === 3) {
+            porcentajeDescuento = 0;
+            nombreCondicion = "Ninguna (0%)";
+        } else {
+            alert("Condición especial no válida. Se aplicará sin descuento.");
+        }
+
+
+        let montoDescuento = tarifaBase * porcentajeDescuento;
+        let valorTotal = tarifaBase - montoDescuento;
+
+
+        let formatoMoneda = new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP', maximumFractionDigits: 0 });
+
+
+        if (tarifaBase > 0) {
+            document.write(`
+                <div class="card ${claseTransporte}">
+                    <h2>Resumen de Pasaje</h2>
+                    <p><strong>Usuario:</strong> ${nombre}</p>
+                    <p><strong>Tipo de Transporte:</strong> ${nombreTransporte}</p>
+                    <p><strong>Tarifa Base:</strong> ${formatoMoneda.format(tarifaBase)}</p>
+                    <p><strong>Condición Especial:</strong> ${nombreCondicion}</p>
+                    <p><strong>Descuento Aplicado:</strong> -${formatoMoneda.format(montoDescuento)}</p>
+                    <hr>
+                    <h3 class="total">Total a Pagar: ${formatoMoneda.format(valorTotal)}</h3>
+                </div>
+            `);
+        } else {
+            document.write('<div class="card"><p>Error en la captura de datos. Por favor recargue la página e intente de nuevo.</p></div>');
+        }
+    </script>
+
+</body>
+</html>
